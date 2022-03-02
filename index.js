@@ -1,16 +1,22 @@
-// Set up Game Data gamestate (the data we need to keep track of)
+// As users playing a two player game we want to:
 
-// Write Functions to manipulate the gamestate
+// enter our names and have them displayed
+// have our order chosen for us by the game
+// take turns placing our marks in empty spaces
+// not be able to place our marks in an occupied space
+// be told when a move causes a player to win, or to draw
+// start the game over without having to reset the browser
+// As a user playing a one player game I want to:
 
-// We need to put stuff on the screen 
-// Make the tic tac toe board 'look at WakeAMole or Pixalet for structure' 
+// see the name 'Computer' displayed as my opponent
+// have the Computer player make moves as if it were a human player with the correct mark in an empty space
+// As a user playing a single player game I would be delighted to:
 
-// Connect the screen with the button functions and gamedata so they can interact 
+// have the Computer make 'better-than-guessing' choices when placing a mark on the board
+// set the board size myself ("wider" or "taller" than 3x3)
 
-//let board;
-// let playerO = 'O';
-// let playerX = 'X';
 let currentPlayer = 'O';
+let count = 'X'
 let gameOver = false;
 const table = document.getElementById('board')
 
@@ -20,18 +26,24 @@ const table = document.getElementById('board')
 // add x's and o's
 
 function gamePieces(event) {
-    event.target.innerText = currentPlayer
+    //console.log( event.target.nodeName)
+    if (currentPlayer === 'O' && event.target.nodeName === 'TD') {
 
-
-    if (currentPlayer === 'O') {
         currentPlayer = 'X';
-    } else {
-        currentPlayer = 'O';
-    }
+        event.target.innerText = currentPlayer
+    } else if (currentPlayer === 'X' && event.target.nodeName === 'TD') {
 
+        currentPlayer = 'O';
+        event.target.innerText = currentPlayer
+    }
+    // call function to evaluate winner calls this into action 
 
 }
-// addd eventlistner on click 
+function fun() {
+    document.getElementById("but").innerHTML = "test";
+
+}
 table.addEventListener('click', gamePieces)
+
 
 
