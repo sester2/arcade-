@@ -26,7 +26,7 @@ const table = document.getElementById('board')
 // add x's and o's
 
 function gamePieces(event) {
-    //console.log( event.target.nodeName)
+
     if (currentPlayer === 'O' && event.target.nodeName === 'TD') {
 
         currentPlayer = 'X';
@@ -36,14 +36,41 @@ function gamePieces(event) {
         currentPlayer = 'O';
         event.target.innerText = currentPlayer
     }
-    // call function to evaluate winner calls this into action 
 
 }
-function fun() {
-    document.getElementById("but").innerHTML = "test";
+//     // call function to evaluate winner called this into action 
+//     function evaluate() {
+//         // I want to go through the TD and look for X and O 
+//         // for () {
+
+
+// if there are X's and O's lined up then return string winner
+//         //     }
+//         // }
+//     }
+// }
+
+
+// I want to reset the board through the rest button function fun 
+function restButton() {
+    document.getElementById("but").innerHTML = "Reset";
+
+    fun()
+}
+
+function evaluate() {
+    const tds = document.querySelectorAll('TD')
+    tds.forEach(function (td) { console.log(td.innerText) })
+
+    if (currentPlayer == 'O') {
+
+        // if the x's and the o's do not line up when board is filled then draw
+    } else if (true) {
+
+        return 'draw'
+
+
+    }
 
 }
 table.addEventListener('click', gamePieces)
-
-
-
