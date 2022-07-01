@@ -1,55 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Tic-Tac-Toe</title>
-  <link rel="stylesheet" href="index.css"/>
-  <script defer src="index.js" ></script>
-</head>
-<body> 
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="index.css" />
+    <script defer src="index.js"></script>
+  </head>
+  <body>
     <h1>Tic Tac Toe</h1>
-    <hr>
-    <br>
-    <br><br><br>
-    <br>
+    <hr />
+    <br />
+    <br /><br /><br />
+    <br />
     <div id="board">
-        <!-- Game Instructions -->
-        <p id="ins"> 
-            Game starts by just Tap on 
-              box<br><br>First Player starts as 
-                 <b>Player X</b><br>And<br>Second 
-                  Player as <b>Player 0</b>
-         </p>
-        <table class="tableofXandO" id="table2dc">
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </table> 
+      <!-- Game Instructions -->
+      <p id="ins">
+        Game starts by just Tap on box<br /><br />First Player starts as
+        <b>Player X</b><br />And<br />Second Player as <b>Player O</b>
+        <div id="WINN"></div>
+      </p>
+      <table class="tableofXandO" id="table2dc">
+        <tr>
+          <td data-row="0" data-cell="0" ></td>
+          <td data-row="0" data-cell="1" ></td>
+          <td data-row="0" data-cell="2" ></td>
+        </tr>
+        <tr>
+          <td data-row="1" data-cell="0"></td>
+          <td data-row="1" data-cell="1"></td>
+          <td data-row="1" data-cell="2"></td>
+        </tr>
+        <tr>
+          <td data-row="2" data-cell="0" ></td>
+          <td data-row="2" data-cell="1" ></td>
+          <td data-row="2" data-cell="2" ></td>
+        </tr>
+      </table>
 
-        
-   
-    <button id="but" onclick="fun()">
-        RESET
-    </button>
+      <button id="reset">RESET</button>
 
-    
-    <!-- Space to show player turn -->
-    <p id="print"></p>
-
-
+      <!-- Space to show player turn -->
+      <p id="print"></p>
     </div>
-</body>
+  </body>
 </html>
-

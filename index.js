@@ -15,62 +15,133 @@
 // have the Computer make 'better-than-guessing' choices when placing a mark on the board
 // set the board size myself ("wider" or "taller" than 3x3)
 
-let currentPlayer = 'O';
-let count = 'X'
-let gameOver = false;
-const table = document.getElementById('board')
+let gameState = {
+  players: ["X", "O"],
+  board: [
+    [null, null, null],
+    [null, null, null],
+    [null, null, null],
+  ],
+  currentPlayer:"O",
+  count: 1,
+  gameOver: false,
+};
+const table = document.getElementById("board");
 
 // window.onload = function () {
 //     setGame();
 // }
 // add x's and o's
 
-function gamePieces(event) {
+//     // call function to evaluate winner called this into action
 
-    if (currentPlayer === 'O' && event.target.nodeName === 'TD') {
+const checkDiagonal = () => {
+  for (let i = 0; i < 3; i++) {
+  if (gameState.board[2].toString() == ["X", "X", "X"]) {
+    return true;
+  } else if (gameState.board[1].toString() == ["O", "O", "O"]) {
+    return true;
+  } else {
+    return false;
+  }
+}  
+};
+checkDiagonal();
 
-        currentPlayer = 'X';
-        event.target.innerText = currentPlayer
-    } else if (currentPlayer === 'X' && event.target.nodeName === 'TD') {
-
-        currentPlayer = 'O';
-        event.target.innerText = currentPlayer
-    }
-
+const checkVertical = () => {
+  for (let i = 1; i < 3; i--) {
+  if (gameState.board[1].toString() == ["X", "X", "X"]) {
+    return true;
+  } else if (gameState.board[1].toString() == ["O", "O", "O"]) {
+    return true;
+  } else {
+    return false;
+  }
 }
-//     // call function to evaluate winner called this into action 
-//     function evaluate() {
-//         // I want to go through the TD and look for X and O 
+};
+checkVertical();
+
+const checkHorizontal = () => {
+  for (let i = 0; i < board.length; i++) {
+    for(let j = 1; j < board[i].length; j++) {    
+
+      console.log(gameState.board[i][j])
+    if (
+      gameState.board[i].toString() == 'X,X,X' ||
+      gameState.board[i].toString() == 'O,O,O'
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+};
+
+// function evaluate () =>{
+
+//     })
+
+//         // I want to go through the TD and look for X and O
 //         // for () {
 
-
 // if there are X's and O's lined up then return string winner
-//         //     }
-//         // }
-//     }
-// }
 
+// if statment for X and O that maps through to see if there is a lined up winner
+// Board needs to recognize that the X's and O's are aligned
+// return the string winner ("WINNER")
 
-// I want to reset the board through the rest button function fun 
-function restButton() {
-    document.getElementById("but").innerHTML = "Reset";
+// I want to reset the board through the rest button function fun
 
-    fun()
+const resetButton = document.getElementById("reset");
+resetButton.addEventListener("click", (e) => {
+  gameState.board = [
+    [null, null, null],
+    [null, null, null],
+    [null, null, null],
+  ];
+  gameState.currentPlayer = "O";
+  gameState.gameOver = false;
+});
+function renderHelper() {
+  //take all of gamestate.board and update all of the inner HTML's for the corresponding html element.
 }
-
 function evaluate() {
-    const tds = document.querySelectorAll('TD')
-    tds.forEach(function (td) { console.log(td.innerText) })
-
-    if (currentPlayer == 'O') {
-
-        // if the x's and the o's do not line up when board is filled then draw
-    } else if (true) {
-
-        return 'draw'
-
-
-    }
-
+  const tds = document.querySelectorAll("TD");
+  tds.forEach(function (td) {
+    console.log(td.innerText);
+  });
 }
-table.addEventListener('click', gamePieces)
+
+function gamePieces(event) {
+  if (gameState.count === 1 && event.target.innerText === '') {
+    event.target.innerText = "O"
+    gameState.board[parseInt(event.target.dataset.row)][
+      parseInt(event.target.dataset.cell)
+    ] = "O";
+    gameState.count--
+
+    /// Need the logic for to match up for the html render
+    gameState.board[0];
+  } else if (
+    gameState.count === 0  && event.target.innerText === '') {
+    event.target.innerText = "X"
+    console.log(event.target.dataset.row);
+    gameState.board[parseInt(event.target.dataset.row)][parseInt(event.target.dataset.cell)] =
+      "X";
+      gameState.count++
+  }
+
+  checkWinn();
+}
+
+function checkWinn() {
+  if (checkHorizontal() || checkVertical() || checkDiagonal()) {
+  console.log(checkWinn)
+  return 'winner'
+  }else{
+
+  }
+}
+
+table.addEventListener("click", gamePieces);
