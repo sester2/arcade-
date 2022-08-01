@@ -94,15 +94,17 @@ const checkHorizontal = () => {
 // I want to reset the board through the rest button function fun
 
 const resetButton = document.getElementById("reset");
-resetButton.addEventListener("click", (e) => {
+resetButton.addEventListener("click", (event) => {
   gameState.board = [
     [null, null, null],
     [null, null, null],
     [null, null, null],
   ];
+  event.target.gameState.board = 
   gameState.currentPlayer = "O";
   gameState.gameOver = false;
 });
+
 function renderHelper() {
   //take all of gamestate.board and update all of the inner HTML's for the corresponding html element.
 }
