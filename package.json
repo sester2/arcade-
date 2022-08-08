@@ -16,5 +16,8 @@
   },
   "homepage": "https://github.com/sester2/arcade-#readme",
   "keywords": [],
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "nodemon": "^2.0.19"
+  }
 }
